@@ -1,9 +1,9 @@
-package Repositories;
+package com.jalaramrakhi.erpjr.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import Entities.Company;
+import com.jalaramrakhi.erpjr.entity.Company;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Integer>{

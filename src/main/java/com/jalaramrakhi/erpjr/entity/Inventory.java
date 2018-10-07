@@ -1,3 +1,4 @@
+package com.jalaramrakhi.erpjr.entity;
 //package Entities;
 //
 //

@@ -1,4 +1,4 @@
-package Entities;
+package com.jalaramrakhi.erpjr.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
