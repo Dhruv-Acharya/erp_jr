@@ -1,48 +1,39 @@
 package com.jalaramrakhi.erpjr.entity;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
 public class InvoiceItem {
 
-	@Id
-	@ManyToOne
-	private Invoice invoice;
-	@Id
-	@OneToOne
-	private InventoryItem inventoryItem;
+	@EmbeddedId
+	private InvoiceItemIdentity invoiceItemIdentity;
+
 	private int item_quantity;
 	private double item_price;
 	@OneToOne
+    @JoinColumn(name = "unit_id")
 	private Unit unit;
 	private double tax;
-	/**
-	 * @return the invoice
-	 */
-	public Invoice getInvoice() {
-		return invoice;
+
+	public InvoiceItem(InvoiceItemIdentity invoiceItemIdentity, int item_quantity, double item_price, Unit unit, double tax) {
+		this.invoiceItemIdentity = invoiceItemIdentity;
+		this.item_quantity = item_quantity;
+		this.item_price = item_price;
+		this.unit = unit;
+		this.tax = tax;
 	}
-	/**
-	 * @param invoice the invoice to set
-	 */
-	public void setInvoice(Invoice invoice) {
-		this.invoice = invoice;
+
+	public InvoiceItemIdentity getInvoiceItemIdentity() {
+		return invoiceItemIdentity;
 	}
-	/**
-	 * @return the inventoryItem
-	 */
-	public InventoryItem getInventoryItem() {
-		return inventoryItem;
+
+	public void setInvoiceItemIdentity(InvoiceItemIdentity invoiceItemIdentity) {
+		this.invoiceItemIdentity = invoiceItemIdentity;
 	}
-	/**
-	 * @param inventoryItem the inventoryItem to set
-	 */
-	public void setInventoryItem(InventoryItem inventoryItem) {
-		this.inventoryItem = inventoryItem;
-	}
+
 	/**
 	 * @return the item_quantity
 	 */

@@ -1,5 +1,4 @@
 package com.jalaramrakhi.erpjr.entity;
-//package Entities;
 //
 //
 //import java.util.ArrayList;

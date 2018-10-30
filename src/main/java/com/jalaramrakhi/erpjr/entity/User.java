@@ -1,10 +1,14 @@
 package com.jalaramrakhi.erpjr.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="tbl_user")
 public class User {
 
 	@Id
@@ -12,8 +16,9 @@ public class User {
 	private String user_name;
 	private String user_password;
 	@OneToOne
+	@JoinColumn(name = "company_id")
 	private Company company;
-	
+
 	/**
 	 * @return the user_id
 	 */
@@ -61,7 +66,7 @@ public class User {
 	 */
 	public void setCompany(Company company) {
 		this.company = company;
-	}	
-	
-	
+	}
+
+
 }

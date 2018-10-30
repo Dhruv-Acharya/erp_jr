@@ -2,6 +2,7 @@ package com.jalaramrakhi.erpjr.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -17,8 +18,10 @@ public class InventoryItem {
     private double item_selling_price;
     private double item_qty;
     @OneToOne
+	@JoinColumn(name = "unit_id")
     private Unit unit;
     @OneToOne
+	@JoinColumn(name = "category_id")
     private Category category;
     
 	/**

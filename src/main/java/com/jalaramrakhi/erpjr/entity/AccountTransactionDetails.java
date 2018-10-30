@@ -3,17 +3,28 @@ package com.jalaramrakhi.erpjr.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class AccountTransactionDetails {
 
+	@Id
+	private Integer transaction_id;
 	@ManyToOne
 	private Account account;
 	private double transaction_amount;
 	private Date transaction_date;
 	private String transaction_narration;
-	
+
+
+	public Integer getTransaction_id() {
+		return transaction_id;
+	}
+
+	public void setTransaction_id(Integer transaction_id) {
+		this.transaction_id = transaction_id;
+	}
 	/**
 	 * @return the account
 	 */

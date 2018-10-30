@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -20,10 +21,55 @@ public class Invoice {
     @OneToOne
     private User preparedBy;
     @OneToOne
+	@JoinColumn(name = "company_id")
 	private Company company;
-    private int invoice_LR_number;
-    private String invoice_transport;
-    private int invoice_phone_number;
+	private int invoice_LR_number;
+	private String invoice_transport;
+	private int invoice_phone_number;
+	@OneToOne
+	private Address address;
+
+	public User getPreparedBy() {
+		return preparedBy;
+	}
+
+	public void setPreparedBy(User preparedBy) {
+		this.preparedBy = preparedBy;
+	}
+
+	public Integer getInvoice_number() {
+		return invoice_number;
+	}
+
+	public void setInvoice_number(Integer invoice_number) {
+		this.invoice_number = invoice_number;
+	}
+
+	public Account getDebit_account() {
+		return debit_account;
+	}
+
+	public void setDebit_account(Account debit_account) {
+		this.debit_account = debit_account;
+	}
+
+	public Account getCredit_account() {
+		return credit_account;
+	}
+
+	public void setCredit_account(Account credit_account) {
+		this.credit_account = credit_account;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+
     
     /**
 	 * @return the invoice_id
