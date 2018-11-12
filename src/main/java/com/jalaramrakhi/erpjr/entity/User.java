@@ -2,6 +2,7 @@ package com.jalaramrakhi.erpjr.entity;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
+	@GeneratedValue
 	private Integer user_id;
 	private String user_name;
 	private String user_password;
