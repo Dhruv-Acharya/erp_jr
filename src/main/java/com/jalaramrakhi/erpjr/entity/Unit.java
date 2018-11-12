@@ -1,15 +1,25 @@
 package com.jalaramrakhi.erpjr.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Unit {
 
 	@Id
+	@GeneratedValue
 	private Integer unit_id;
 	private String unit_type;
-	
+
+	public Unit() {
+	}
+
+	public Unit(Integer unit_id, String unit_type) {
+		this.unit_id = unit_id;
+		this.unit_type = unit_type;
+	}
+
 	/**
 	 * @return the unit_id
 	 */

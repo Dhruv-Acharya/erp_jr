@@ -1,5 +1,6 @@
 package com.jalaramrakhi.erpjr.controller;
 
+import com.jalaramrakhi.erpjr.Utils.CompanyWrapper;
 import com.jalaramrakhi.erpjr.entity.Company;
 import com.jalaramrakhi.erpjr.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/company")
+@RequestMapping(value = "/company")
 public class CompanyController {
 
 	@Autowired
@@ -37,11 +38,11 @@ public class CompanyController {
 
 	// Create New Company
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Company> createNewCompany(@RequestBody Company company, HttpServletRequest req) {
-		return companyService.createNewCompany(company, req);
+	public ResponseEntity<Company> createNewCompany(@RequestBody CompanyWrapper companyWrapper, HttpServletRequest req) {
+		return companyService.createNewCompany(companyWrapper, req);
 	}
 
-	// Update Contact with PATCH
+	// Update Company with PATCH
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Company> updateCompany(@PathVariable Integer id, @RequestBody Company company) {
 		return companyService.updateCompany(id, company);

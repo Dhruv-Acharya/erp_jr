@@ -10,8 +10,16 @@ public class Category {
 	private Integer HSN_code;
 	private String category_name;
 	private double tax_rate;
-	
-	
+
+	public Category() {
+	}
+
+	public Category(Integer HSN_code, String category_name, double tax_rate) {
+		this.HSN_code = HSN_code;
+		this.category_name = category_name;
+		this.tax_rate = tax_rate;
+	}
+
 	/**
 	 * @return the hSN_code
 	 */

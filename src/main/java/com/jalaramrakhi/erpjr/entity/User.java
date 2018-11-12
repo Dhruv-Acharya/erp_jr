@@ -21,6 +21,15 @@ public class User {
 	@JoinColumn(name = "company_id")
 	private Company company;
 
+	public User() {
+	}
+
+	public User(String user_name, String user_password, Company company) {
+		this.user_name = user_name;
+		this.user_password = user_password;
+		this.company = company;
+	}
+
 	/**
 	 * @return the user_id
 	 */

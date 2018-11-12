@@ -2,8 +2,12 @@ package com.jalaramrakhi.erpjr.service;
 
 import com.jalaramrakhi.erpjr.Exceptions.CompanyMissingInformationException;
 import com.jalaramrakhi.erpjr.Exceptions.CompanyNotFoundException;
+import com.jalaramrakhi.erpjr.Exceptions.UserIncorrectInformationException;
+import com.jalaramrakhi.erpjr.Utils.CompanyWrapper;
 import com.jalaramrakhi.erpjr.entity.Company;
+import com.jalaramrakhi.erpjr.entity.User;
 import com.jalaramrakhi.erpjr.repository.CompanyRepository;
+import com.jalaramrakhi.erpjr.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,10 +24,13 @@ import java.util.Optional;
 public class CompanyServiceImpl implements CompanyService {
 
     private CompanyRepository companyRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public void CompanyServiceImpl(CompanyRepository companyRepository) {
+    public void CompanyServiceImpl(CompanyRepository companyRepository, UserRepository userRepository) {
         Assert.notNull(companyRepository, "CompanyRepository must not be null!");
+        Assert.notNull(userRepository, "UserRepository must not be null!");
+        this.userRepository = userRepository;
         this.companyRepository = companyRepository;
     }
 
@@ -41,13 +48,28 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public ResponseEntity<Company> createNewCompany(Company company, HttpServletRequest request) {
-        if(null != company.getCompany_name() && company.getCompany_name().length() > 0) {
-            Company newCompany = companyRepository.saveAndFlush(company);
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.set("Location", companyUrlHelper(newCompany, request));
+    public ResponseEntity<Company> createNewCompany(CompanyWrapper companyWrapper, HttpServletRequest request) {
+        if(null != companyWrapper.getCompany_name() && companyWrapper.getCompany_name().length() > 0) {
+            if(companyWrapper.getUser_name() != null && companyWrapper.getUser_name().length() > 0) {
+                if (companyWrapper.getUser_password() != null && companyWrapper.getUser_password().length() > 6) {
 
-            return new ResponseEntity<Company>(newCompany, responseHeaders, HttpStatus.CREATED);
+                    Company newCompany = new Company(companyWrapper.getCompany_name());
+                    companyRepository.saveAndFlush(newCompany);
+
+                    User newUser = new User(companyWrapper.getUser_name(), companyWrapper.getUser_password(), newCompany);
+                    userRepository.saveAndFlush(newUser);
+
+                    HttpHeaders responseHeaders = new HttpHeaders();
+                    responseHeaders.set("Location", companyUrlHelper(newCompany, request));
+                    return new ResponseEntity<Company>(newCompany, responseHeaders, HttpStatus.CREATED);
+                }
+                else {
+                    throw new UserIncorrectInformationException();
+                }
+            }
+            else {
+                throw new UserIncorrectInformationException();
+            }
         } else {
             throw new CompanyMissingInformationException();
         }
