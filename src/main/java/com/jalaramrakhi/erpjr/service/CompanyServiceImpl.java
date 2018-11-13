@@ -56,7 +56,7 @@ public class CompanyServiceImpl implements CompanyService {
                     Company newCompany = new Company(companyWrapper.getCompany_name());
                     companyRepository.saveAndFlush(newCompany);
 
-                    User newUser = new User(companyWrapper.getUser_name(), companyWrapper.getUser_password(), newCompany);
+                    User newUser = new User(companyWrapper.getUser_name(), companyWrapper.getUser_password(), companyWrapper.getUser_confirm_password(), newCompany);
                     userRepository.saveAndFlush(newUser);
 
                     HttpHeaders responseHeaders = new HttpHeaders();
