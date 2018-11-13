@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public ResponseEntity<User> createNewUser(User user, HttpServletRequest request) {
         if(user.getUser_name() != null && user.getUser_name().length() > 0) {
-            if(user.getUser_password() != null && user.getUser_password().length() > 6) {
+            if(user.getUser_password() != null && user.getUser_password().length() > 6 && user.getUser_password() != user.getUser_confirm_password()) {
                 User newUser = userRepository.saveAndFlush(user);
                 HttpHeaders responseHeaders = new HttpHeaders();
                 responseHeaders.set("Location", userUrlHelper(newUser, request));

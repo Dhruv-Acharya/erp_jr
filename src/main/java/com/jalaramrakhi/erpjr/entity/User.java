@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="tbl_user")
@@ -17,6 +18,8 @@ public class User {
 	private Integer user_id;
 	private String user_name;
 	private String user_password;
+	@Transient
+	private String user_confirm_password;
 	@OneToOne
 	@JoinColumn(name = "company_id")
 	private Company company;
@@ -24,9 +27,10 @@ public class User {
 	public User() {
 	}
 
-	public User(String user_name, String user_password, Company company) {
+	public User(String user_name, String user_password, String user_confirm_password, Company company) {
 		this.user_name = user_name;
 		this.user_password = user_password;
+		this.user_confirm_password = user_confirm_password;
 		this.company = company;
 	}
 
@@ -66,6 +70,15 @@ public class User {
 	public void setUser_password(String user_password) {
 		this.user_password = user_password;
 	}
+
+	public String getUser_confirm_password() {
+		return user_confirm_password;
+	}
+
+	public void setUser_confirm_password(String user_confirm_password) {
+		this.user_confirm_password = user_confirm_password;
+	}
+
 	/**
 	 * @return the company
 	 */
