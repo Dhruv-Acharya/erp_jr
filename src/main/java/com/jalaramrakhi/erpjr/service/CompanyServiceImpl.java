@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -25,13 +26,16 @@ public class CompanyServiceImpl implements CompanyService {
 
     private CompanyRepository companyRepository;
     private UserRepository userRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public void CompanyServiceImpl(CompanyRepository companyRepository, UserRepository userRepository) {
+    public void CompanyServiceImpl(CompanyRepository companyRepository, UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         Assert.notNull(companyRepository, "CompanyRepository must not be null!");
         Assert.notNull(userRepository, "UserRepository must not be null!");
+        Assert.notNull(userRepository, "bCryptPasswordEncoder must not be null!");
         this.userRepository = userRepository;
         this.companyRepository = companyRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -57,6 +61,7 @@ public class CompanyServiceImpl implements CompanyService {
                     companyRepository.saveAndFlush(newCompany);
 
                     User newUser = new User(companyWrapper.getUser_name(), companyWrapper.getUser_password(), companyWrapper.getUser_confirm_password(), newCompany);
+                    newUser.setUser_password(bCryptPasswordEncoder.encode(newUser.getUser_password()));
                     userRepository.saveAndFlush(newUser);
 
                     HttpHeaders responseHeaders = new HttpHeaders();

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -19,11 +20,14 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService{
 
     private UserRepository userRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public void UserServiceImpl(UserRepository userRepository) {
+    public void UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         Assert.notNull(userRepository, "UserRepository must not be null!");
+        Assert.notNull(userRepository, "bCryptPasswordEncoder must not be null!");
         this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -36,6 +40,7 @@ public class UserServiceImpl implements UserService{
     public ResponseEntity<User> createNewUser(User user, HttpServletRequest request) {
         if(user.getUser_name() != null && user.getUser_name().length() > 0) {
             if(user.getUser_password() != null && user.getUser_password().length() > 6 && user.getUser_password() != user.getUser_confirm_password()) {
+                user.setUser_password(bCryptPasswordEncoder.encode(user.getUser_password()));
                 User newUser = userRepository.saveAndFlush(user);
                 HttpHeaders responseHeaders = new HttpHeaders();
                 responseHeaders.set("Location", userUrlHelper(newUser, request));

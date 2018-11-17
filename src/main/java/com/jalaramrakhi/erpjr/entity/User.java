@@ -1,6 +1,7 @@
 package com.jalaramrakhi.erpjr.entity;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="tbl_user")
@@ -16,7 +18,8 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer user_id;
-	private String user_name;
+	@Column(name = "user_name", unique = true)
+	private String username;
 	private String user_password;
 	@Transient
 	private String user_confirm_password;
@@ -27,8 +30,8 @@ public class User {
 	public User() {
 	}
 
-	public User(String user_name, String user_password, String user_confirm_password, Company company) {
-		this.user_name = user_name;
+	public User(String username, String user_password, String user_confirm_password, Company company) {
+		this.username = username;
 		this.user_password = user_password;
 		this.user_confirm_password = user_confirm_password;
 		this.company = company;
@@ -41,10 +44,10 @@ public class User {
 		return user_id;
 	}
 	/**
-	 * @return the user_name
+	 * @return the username
 	 */
 	public String getUser_name() {
-		return user_name;
+		return username;
 	}
 	/**
 	 * @param user_id the user_id to set
@@ -53,10 +56,10 @@ public class User {
 		this.user_id = user_id;
 	}
 	/**
-	 * @param user_name the user_name to set
+	 * @param username the user_name to set
 	 */
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUser_name(String username) {
+		this.username = username;
 	}
 	/**
 	 * @return the user_password
