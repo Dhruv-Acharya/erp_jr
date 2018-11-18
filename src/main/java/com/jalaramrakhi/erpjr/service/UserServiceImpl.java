@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService{
         if(userUpdates.getUser_name() != null && userUpdates.getUser_name().length() > 0) {
             if(userUpdates.getUser_password() != null && userUpdates.getUser_password().length() > 6) {
                 BeanUtils.copyProperties(userUpdates, existingUser);
-
+                existingUser.setUser_password(bCryptPasswordEncoder.encode(existingUser.getUser_password()));
                 // Ensure ID remains unchanged
                 existingUser.setUser_id(id);
 

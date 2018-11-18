@@ -42,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public ResponseEntity<Category> addNewCategory(Category category, HttpServletRequest request) {
-        if(null != category.getHSN_code()) {
+        if(category.getHSN_code() != null) {
             categoryRepository.saveAndFlush(category);
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.set("Location", categoryUrlHelper(category, request));
@@ -61,7 +61,7 @@ public class CategoryServiceImpl implements CategoryService{
             BeanUtils.copyProperties(category, existingCategory);
 
             // Ensure ID remains unchanged
-            existingCategory.setHSN_code(id);
+            //existingCategory.setHSN_code(id);
 
             Category updatedCategory = categoryRepository.saveAndFlush(existingCategory);
             return new ResponseEntity<Category>(updatedCategory, HttpStatus.OK);
