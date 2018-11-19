@@ -24,11 +24,11 @@ public class Address {
         this.state = state;
     }
 
-    public int getAddresss_id() {
+    public int getAddress_id() {
         return addresss_id;
     }
 
-    public void setAddresss_id(int addresss_id) {
+    public void setAddress_id(int addresss_id) {
         this.addresss_id = addresss_id;
     }
 

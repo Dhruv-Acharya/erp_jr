@@ -1,6 +1,7 @@
 package com.jalaramrakhi.erpjr.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -8,6 +9,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class BarcodeItemDetails {
     @Id
+    @GeneratedValue
     private String barcode_id;
     @OneToOne
     @JoinColumn(name = "inventory_item_id")

@@ -1,6 +1,7 @@
 package com.jalaramrakhi.erpjr.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 public class InventoryItem {
 
 	@Id
+	@GeneratedValue
 	private Integer item_id;
 	@NotNull
     private String item_name;
@@ -23,7 +25,21 @@ public class InventoryItem {
     @OneToOne
 	@JoinColumn(name = "category_id")
     private Category category;
-    
+
+	public InventoryItem(Integer item_id, @NotNull String item_name, String item_description, double item_cost_price, double item_selling_price, double item_qty, Unit unit, Category category) {
+		this.item_id = item_id;
+		this.item_name = item_name;
+		this.item_description = item_description;
+		this.item_cost_price = item_cost_price;
+		this.item_selling_price = item_selling_price;
+		this.item_qty = item_qty;
+		this.unit = unit;
+		this.category = category;
+	}
+
+	public InventoryItem() {
+	}
+
 	/**
 	 * @return the category
 	 */

@@ -1,5 +1,6 @@
 package com.jalaramrakhi.erpjr;
 
+import com.jalaramrakhi.erpjr.config.CorsFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -16,4 +17,5 @@ public class ErpForJalaramRakhiApplication {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
