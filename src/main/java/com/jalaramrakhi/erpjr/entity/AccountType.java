@@ -11,7 +11,14 @@ public class AccountType {
 	@GeneratedValue
 	private Integer account_id;
 	private String account_type;
-	
+
+	public AccountType() {
+	}
+
+	public AccountType(String account_type) {
+		this.account_type = account_type;
+	}
+
 	/**
 	 * @return the account_id
 	 */

@@ -2,6 +2,7 @@ package com.jalaramrakhi.erpjr.entity;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,6 +12,7 @@ import javax.persistence.OneToOne;
 public class Account {
 
 	@Id
+	@GeneratedValue
 	private Integer account_code;
 	private String account_name;
 	@OneToOne
@@ -19,7 +21,17 @@ public class Account {
 	@ManyToOne
 	@JoinColumn(name = "company_id")
 	private Company company;
-	
+
+	public Account() {
+	}
+
+	public Account(Integer account_code, String account_name, AccountType accountType, Company company) {
+		this.account_code = account_code;
+		this.account_name = account_name;
+		this.accountType = accountType;
+		this.company = company;
+	}
+
 	/**
 	 * @return the company
 	 */
