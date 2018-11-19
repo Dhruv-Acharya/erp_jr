@@ -23,7 +23,7 @@ public class UnitController {
     @Autowired
     private UnitService unitService;
 
-    // List All Companies
+    // List All Units
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Unit>> getAllUnits() throws Throwable {
         return unitService.getAllUnits();
@@ -41,7 +41,7 @@ public class UnitController {
         return unitService.addNewUnit(unit, req);
     }
 
-    // Update Unit with PATCH
+    // Update Unit with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Unit> updateUnit(@PathVariable Integer id, @RequestBody Unit unit) {
         return unitService.updateUnit(id, unit);

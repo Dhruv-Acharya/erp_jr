@@ -1,12 +1,14 @@
 package com.jalaramrakhi.erpjr.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class AccountType {
 
 	@Id
+	@GeneratedValue
 	private Integer account_id;
 	private String account_type;
 	

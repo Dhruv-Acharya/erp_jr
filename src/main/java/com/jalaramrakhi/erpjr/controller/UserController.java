@@ -33,7 +33,7 @@ public class UserController {
         return userService.createNewUser(user, req);
     }
 
-    // Update User with PATCH
+    // Update User with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User user) {
         return userService.updateUser(id, user);

@@ -40,7 +40,7 @@ public class CategoryController {
         return categoryService.addNewCategory(category, req);
     }
 
-    // Update Category with PATCH
+    // Update Category with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Category> updateCategory(@PathVariable Integer id, @RequestBody Category category) {
         return categoryService.updateCategory(id, category);
