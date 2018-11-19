@@ -35,7 +35,7 @@ public class InventoryItemServiceImpl implements InventoryItemService{
     }
 
     @Override
-    public ResponseEntity<InventoryItem> getSingleInventoryItem(Integer id) {
+    public ResponseEntity<InventoryItem> getSingleInventoryItem(Long id) {
         InventoryItem getInventoryItem = findInventoryItemIfExists(id);
         return new ResponseEntity<InventoryItem>(getInventoryItem, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class InventoryItemServiceImpl implements InventoryItemService{
     }
 
     @Override
-    public ResponseEntity<InventoryItem> updateInventoryItem(Integer id, InventoryItem inventoryItem) {
+    public ResponseEntity<InventoryItem> updateInventoryItem(Long id, InventoryItem inventoryItem) {
         InventoryItem existingInventoryItem = findInventoryItemIfExists(id);
 
         if(null != inventoryItem.getItem_name() && inventoryItem.getItem_name().length() > 0) {
@@ -71,7 +71,7 @@ public class InventoryItemServiceImpl implements InventoryItemService{
     }
 
     @Override
-    public ResponseEntity<InventoryItem> deleteInventoryItem(Integer id) {
+    public ResponseEntity<InventoryItem> deleteInventoryItem(Long id) {
         InventoryItem existingInventoryItem = findInventoryItemIfExists(id);
         inventoryItemRepository.delete(existingInventoryItem);
         return new ResponseEntity<InventoryItem>(HttpStatus.NO_CONTENT);
@@ -87,7 +87,7 @@ public class InventoryItemServiceImpl implements InventoryItemService{
         return resourcePath.toString();
     }
 
-    private InventoryItem findInventoryItemIfExists(Integer id) {
+    private InventoryItem findInventoryItemIfExists(Long id) {
         Optional<InventoryItem> inventoryItem = inventoryItemRepository.findById(id);
 
         if(inventoryItem.isPresent()){

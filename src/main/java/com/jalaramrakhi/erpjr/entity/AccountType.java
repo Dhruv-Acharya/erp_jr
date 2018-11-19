@@ -9,7 +9,7 @@ public class AccountType {
 
 	@Id
 	@GeneratedValue
-	private Integer account_id;
+	private Long account_id;
 	private String account_type;
 
 	public AccountType() {
@@ -22,13 +22,13 @@ public class AccountType {
 	/**
 	 * @return the account_id
 	 */
-	public Integer getAccount_id() {
+	public Long getAccount_id() {
 		return account_id;
 	}
 	/**
 	 * @param account_id the account_id to set
 	 */
-	public void setAccount_id(Integer account_id) {
+	public void setAccount_id(Long account_id) {
 		this.account_id = account_id;
 	}
 	/**

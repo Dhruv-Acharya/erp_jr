@@ -32,7 +32,7 @@ public class CompanyController {
 
 	// List One Company
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Company> getSingleCompany(@PathVariable Integer id) throws Throwable {
+	public ResponseEntity<Company> getSingleCompany(@PathVariable Long id) throws Throwable {
 		return companyService.getSingleCompany(id);
 	}
 
@@ -44,7 +44,7 @@ public class CompanyController {
 
 	// Update Company with PATCH
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Company> updateCompany(@PathVariable Integer id, @RequestBody Company company) {
+	public ResponseEntity<Company> updateCompany(@PathVariable Long id, @RequestBody Company company) {
 		return companyService.updateCompany(id, company);
 	}
 }

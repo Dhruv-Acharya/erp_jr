@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Invoice {
 	@Id
-	private Integer invoice_number;
+	private Long invoice_number;
 	@OneToOne
 	private Account debit_account;
     private double invoice_amount;
@@ -37,11 +37,11 @@ public class Invoice {
 		this.preparedBy = preparedBy;
 	}
 
-	public Integer getInvoice_number() {
+	public Long getInvoice_number() {
 		return invoice_number;
 	}
 
-	public void setInvoice_number(Integer invoice_number) {
+	public void setInvoice_number(Long invoice_number) {
 		this.invoice_number = invoice_number;
 	}
 
@@ -74,13 +74,13 @@ public class Invoice {
     /**
 	 * @return the invoice_id
 	 */
-	public Integer getInvoice_id() {
+	public Long getInvoice_id() {
 		return invoice_number;
 	}
 	/**
 	 * @param invoice_id the invoice_id to set
 	 */
-	public void setInvoice_id(Integer invoice_id) {
+	public void setInvoice_id(Long invoice_id) {
 		this.invoice_number = invoice_id;
 	}
 	/**

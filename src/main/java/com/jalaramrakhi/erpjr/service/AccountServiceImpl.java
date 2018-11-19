@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public ResponseEntity<Account> getSingleAccount(Integer id) {
+    public ResponseEntity<Account> getSingleAccount(Long id) {
         Account getAccount = findAccountIfExists(id);
         return new ResponseEntity<Account>(getAccount, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public ResponseEntity<Account> updateAccount(Integer id, Account account) {
+    public ResponseEntity<Account> updateAccount(Long id, Account account) {
         Account existingAccount = findAccountIfExists(id);
 
         if(null != account.getAccount_name() && account.getAccount_name().length() > 0) {
@@ -71,7 +71,7 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public ResponseEntity<Account> deleteAccount(Integer id) {
+    public ResponseEntity<Account> deleteAccount(Long id) {
         Account existingAccount = findAccountIfExists(id);
         accountRepository.delete(existingAccount);
         return new ResponseEntity<Account>(HttpStatus.NO_CONTENT);
@@ -87,7 +87,7 @@ public class AccountServiceImpl implements AccountService{
         return resourcePath.toString();
     }
 
-    private Account findAccountIfExists(Integer id) {
+    private Account findAccountIfExists(Long id) {
         Optional<Account> account = accountRepository.findById(id);
 
         if(account.isPresent()){

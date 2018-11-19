@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (usernameAndCompany == null || usernameAndCompany.length != 2) {
             throw new UsernameNotFoundException("Username and domain must be provided");
         }
-        com.jalaramrakhi.erpjr.entity.User user = userRepository.findUserByCompany(usernameAndCompany[0], Integer.parseInt(usernameAndCompany[1]));
+        com.jalaramrakhi.erpjr.entity.User user = userRepository.findUserByCompany(usernameAndCompany[0], Long.parseLong(usernameAndCompany[1]));
         if (user == null) {
             throw new UsernameNotFoundException(
                     String.format("Username not found for domain, username=%s, domain=%s",

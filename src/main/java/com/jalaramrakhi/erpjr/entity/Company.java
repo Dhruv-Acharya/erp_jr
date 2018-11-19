@@ -10,7 +10,7 @@ public class Company implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private Integer company_id;
+	private Long company_id;
 	private String company_name;
 
 	public Company(String company_name) {
@@ -21,13 +21,13 @@ public class Company implements Serializable {
 	/**
 	 * @return the company_id
 	 */
-	public Integer getCompany_id() {
+	public Long getCompany_id() {
 		return company_id;
 	}
 	/**
 	 * @param company_id the company_id to set
 	 */
-	public void setCompany_id(Integer company_id) {
+	public void setCompany_id(Long company_id) {
 		this.company_id = company_id;
 	}
 	/**

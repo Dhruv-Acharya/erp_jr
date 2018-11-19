@@ -10,8 +10,8 @@ import java.util.List;
 public interface CompanyService {
 
     public ResponseEntity<List<Company>> getAllCompany();
-    public ResponseEntity<Company> getSingleCompany(Integer id);
+    public ResponseEntity<Company> getSingleCompany(Long id);
     public ResponseEntity<Company> createNewCompany(CompanyWrapper companyWrapper, HttpServletRequest request);
-    public ResponseEntity<Company> updateCompany(Integer id, Company companyUpdates);
+    public ResponseEntity<Company> updateCompany(Long id, Company companyUpdates);
 //    public ResponseEntity<Company> deleteCompany(Long id);
 }

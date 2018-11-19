@@ -23,7 +23,7 @@ public class UserController {
 
     // Get One User
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> getSingleUser(@PathVariable Integer id) {
+    public ResponseEntity<User> getSingleUser(@PathVariable Long id) {
         return userService.getSingleUser(id);
     }
 
@@ -35,13 +35,13 @@ public class UserController {
 
     // Update User with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         return userService.updateUser(id, user);
     }
 
     // Delete User
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<User> deleteUser(@PathVariable Integer id) {
+    public ResponseEntity<User> deleteUser(@PathVariable Long id) {
         return userService.deleteUser(id);
     }
 }

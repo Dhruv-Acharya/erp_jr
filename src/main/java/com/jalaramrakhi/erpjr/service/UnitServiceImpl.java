@@ -35,7 +35,7 @@ public class UnitServiceImpl implements UnitService{
     }
 
     @Override
-    public ResponseEntity<Unit> getSingleUnit(Integer id) {
+    public ResponseEntity<Unit> getSingleUnit(Long id) {
         Unit getUnit = findUnitIfExists(id);
         return new ResponseEntity<Unit>(getUnit, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class UnitServiceImpl implements UnitService{
     }
 
     @Override
-    public ResponseEntity<Unit> updateUnit(Integer id, Unit unit) {
+    public ResponseEntity<Unit> updateUnit(Long id, Unit unit) {
         Unit existingUnit = findUnitIfExists(id);
 
         if(null != unit.getUnit_type() && unit.getUnit_type().length() > 0) {
@@ -71,7 +71,7 @@ public class UnitServiceImpl implements UnitService{
     }
 
     @Override
-    public ResponseEntity<Unit> deleteUnit(Integer id) {
+    public ResponseEntity<Unit> deleteUnit(Long id) {
         Unit existingUnit = findUnitIfExists(id);
         unitRepository.delete(existingUnit);
         return new ResponseEntity<Unit>(HttpStatus.NO_CONTENT);
@@ -87,7 +87,7 @@ public class UnitServiceImpl implements UnitService{
         return resourcePath.toString();
     }
 
-    private Unit findUnitIfExists(Integer id) {
+    private Unit findUnitIfExists(Long id) {
         Optional<Unit> unit = unitRepository.findById(id);
 
         if(unit.isPresent()){

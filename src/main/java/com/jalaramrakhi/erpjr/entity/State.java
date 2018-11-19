@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class State {
     @Id
     @GeneratedValue
-    private int state_id;
+    private Long state_id;
     private String state_name;
 
     public State(String state_name) {
@@ -18,11 +18,11 @@ public class State {
     public State() {
     }
 
-    public int getState_id() {
+    public Long getState_id() {
         return state_id;
     }
 
-    public void setState_id(int state_id) {
+    public void setState_id(Long state_id) {
         this.state_id = state_id;
     }
 

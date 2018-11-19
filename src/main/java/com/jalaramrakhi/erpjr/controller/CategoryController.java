@@ -30,7 +30,7 @@ public class CategoryController {
 
     // Get One Category
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Category> getSingleCategory(@PathVariable Integer id) {
+    public ResponseEntity<Category> getSingleCategory(@PathVariable Long id) {
         return categoryService.getSingleCategory(id);
     }
 
@@ -42,13 +42,13 @@ public class CategoryController {
 
     // Update Category with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Category> updateCategory(@PathVariable Integer id, @RequestBody Category category) {
+    public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category category) {
         return categoryService.updateCategory(id, category);
     }
 
     // Delete Category
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Category> deleteCategory(@PathVariable Integer id) {
+    public ResponseEntity<Category> deleteCategory(@PathVariable Long id) {
         return categoryService.deleteCategory(id);
     }
 }

@@ -9,13 +9,13 @@ public class Unit {
 
 	@Id
 	@GeneratedValue
-	private Integer unit_id;
+	private Long unit_id;
 	private String unit_type;
 
 	public Unit() {
 	}
 
-	public Unit(Integer unit_id, String unit_type) {
+	public Unit(Long unit_id, String unit_type) {
 		this.unit_id = unit_id;
 		this.unit_type = unit_type;
 	}
@@ -23,13 +23,13 @@ public class Unit {
 	/**
 	 * @return the unit_id
 	 */
-	public Integer getUnit_id() {
+	public Long getUnit_id() {
 		return unit_id;
 	}
 	/**
 	 * @param unit_id the unit_id to set
 	 */
-	public void setUnit_id(Integer unit_id) {
+	public void setUnit_id(Long unit_id) {
 		this.unit_id = unit_id;
 	}
 	/**

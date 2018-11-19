@@ -35,7 +35,7 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public ResponseEntity<Address> getSingleAddress(Integer id) {
+    public ResponseEntity<Address> getSingleAddress(Long id) {
         Address getAddress = findAddressIfExists(id);
         return new ResponseEntity<Address>(getAddress, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public ResponseEntity<Address> updateAddress(Integer id, Address address) {
+    public ResponseEntity<Address> updateAddress(Long id, Address address) {
         Address existingAddress = findAddressIfExists(id);
 
         if(null != address.getAddress_line() && address.getAddress_line().length() > 0) {
@@ -71,7 +71,7 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public ResponseEntity<Address> deleteAddress(Integer id) {
+    public ResponseEntity<Address> deleteAddress(Long id) {
         Address existingAddress = findAddressIfExists(id);
         addressRepository.delete(existingAddress);
         return new ResponseEntity<Address>(HttpStatus.NO_CONTENT);
@@ -87,7 +87,7 @@ public class AddressServiceImpl implements AddressService{
         return resourcePath.toString();
     }
 
-    private Address findAddressIfExists(Integer id) {
+    private Address findAddressIfExists(Long id) {
         Optional<Address> address = addressRepository.findById(id);
 
         if(address.isPresent()){

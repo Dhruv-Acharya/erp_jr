@@ -30,7 +30,7 @@ public class InventoryItemController {
 
     // Get One InventoryItem
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<InventoryItem> getSingleInventoryItem(@PathVariable Integer id) {
+    public ResponseEntity<InventoryItem> getSingleInventoryItem(@PathVariable Long id) {
         return inventoryItemService.getSingleInventoryItem(id);
     }
 
@@ -42,13 +42,13 @@ public class InventoryItemController {
 
     // Update InventoryItem with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<InventoryItem> updateInventoryItem(@PathVariable Integer id, @RequestBody InventoryItem inventoryItem) {
+    public ResponseEntity<InventoryItem> updateInventoryItem(@PathVariable Long id, @RequestBody InventoryItem inventoryItem) {
         return inventoryItemService.updateInventoryItem(id, inventoryItem);
     }
 
     // Delete InventoryItem
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<InventoryItem> deleteInventoryItem(@PathVariable Integer id) {
+    public ResponseEntity<InventoryItem> deleteInventoryItem(@PathVariable Long id) {
         return inventoryItemService.deleteInventoryItem(id);
     }
 }

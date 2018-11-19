@@ -13,7 +13,7 @@ public class Account {
 
 	@Id
 	@GeneratedValue
-	private Integer account_code;
+	private Long account_code;
 	private String account_name;
 	@OneToOne
 	@JoinColumn(name = "account_type")
@@ -25,7 +25,7 @@ public class Account {
 	public Account() {
 	}
 
-	public Account(Integer account_code, String account_name, AccountType accountType, Company company) {
+	public Account(Long account_code, String account_name, AccountType accountType, Company company) {
 		this.account_code = account_code;
 		this.account_name = account_name;
 		this.accountType = accountType;
@@ -47,13 +47,13 @@ public class Account {
 	/**
 	 * @return the account_code
 	 */
-	public Integer getAccount_code() {
+	public Long getAccount_code() {
 		return account_code;
 	}
 	/**
 	 * @param account_code the account_code to set
 	 */
-	public void setAccount_code(Integer account_code) {
+	public void setAccount_code(Long account_code) {
 		this.account_code = account_code;
 	}
 	/**

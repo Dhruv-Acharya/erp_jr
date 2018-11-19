@@ -30,7 +30,7 @@ public class AccountTypeController {
 
     // Get One AccountType
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<AccountType> getSingleAccountType(@PathVariable Integer id) {
+    public ResponseEntity<AccountType> getSingleAccountType(@PathVariable Long id) {
         return accountTypeService.getSingleAccountType(id);
     }
 
@@ -42,13 +42,13 @@ public class AccountTypeController {
 
     // Update AccountType with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<AccountType> updateAccountType(@PathVariable Integer id, @RequestBody AccountType accountType) {
+    public ResponseEntity<AccountType> updateAccountType(@PathVariable Long id, @RequestBody AccountType accountType) {
         return accountTypeService.updateAccountType(id, accountType);
     }
 
     // Delete AccountType
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<AccountType> deleteAccountType(@PathVariable Integer id) {
+    public ResponseEntity<AccountType> deleteAccountType(@PathVariable Long id) {
         return accountTypeService.deleteAccountType(id);
     }
 }

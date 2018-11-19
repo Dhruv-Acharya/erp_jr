@@ -30,7 +30,7 @@ public class AccountController {
 
     // Get One Account
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Account> getSingleAccount(@PathVariable Integer id) {
+    public ResponseEntity<Account> getSingleAccount(@PathVariable Long id) {
         return accountService.getSingleAccount(id);
     }
 
@@ -42,13 +42,13 @@ public class AccountController {
 
     // Update Account with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Account> updateAccount(@PathVariable Integer id, @RequestBody Account account) {
+    public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
         return accountService.updateAccount(id, account);
     }
 
     // Delete Account
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Account> deleteAccount(@PathVariable Integer id) {
+    public ResponseEntity<Account> deleteAccount(@PathVariable Long id) {
         return accountService.deleteAccount(id);
     }
 }

@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface UnitService {
     public ResponseEntity<List<Unit>> getAllUnits();
-    public ResponseEntity<Unit> getSingleUnit(Integer id);
+    public ResponseEntity<Unit> getSingleUnit(Long id);
     public ResponseEntity<Unit> addNewUnit(Unit unit, HttpServletRequest request);
-    public ResponseEntity<Unit> updateUnit(Integer id, Unit unit);
-    public ResponseEntity<Unit> deleteUnit(Integer id);
+    public ResponseEntity<Unit> updateUnit(Long id, Unit unit);
+    public ResponseEntity<Unit> deleteUnit(Long id);
 }

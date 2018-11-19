@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface AccountService {
     public ResponseEntity<List<Account>> getAllAccounts();
-    public ResponseEntity<Account> getSingleAccount(Integer id);
+    public ResponseEntity<Account> getSingleAccount(Long id);
     public ResponseEntity<Account> addNewAccount(Account account, HttpServletRequest request);
-    public ResponseEntity<Account> updateAccount(Integer id, Account account);
-    public ResponseEntity<Account> deleteAccount(Integer id);
+    public ResponseEntity<Account> updateAccount(Long id, Account account);
+    public ResponseEntity<Account> deleteAccount(Long id);
 }

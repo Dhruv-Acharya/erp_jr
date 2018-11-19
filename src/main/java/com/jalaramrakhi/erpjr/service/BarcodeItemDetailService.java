@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface BarcodeItemDetailService {
     public ResponseEntity<List<BarcodeItemDetails>> getAllBarcodeItemDetailss();
-    public ResponseEntity<BarcodeItemDetails> getSingleBarcodeItemDetails(String id);
+    public ResponseEntity<BarcodeItemDetails> getSingleBarcodeItemDetails(Long id);
     public ResponseEntity<BarcodeItemDetails> addNewBarcodeItemDetails(BarcodeItemDetails barcodeItemDetails, HttpServletRequest request);
-    public ResponseEntity<BarcodeItemDetails> updateBarcodeItemDetails(String id, BarcodeItemDetails barcodeItemDetails);
-    public ResponseEntity<BarcodeItemDetails> deleteBarcodeItemDetails(String id);
+    public ResponseEntity<BarcodeItemDetails> updateBarcodeItemDetails(Long id, BarcodeItemDetails barcodeItemDetails);
+        public ResponseEntity<BarcodeItemDetails> deleteBarcodeItemDetails(Long id);
 }

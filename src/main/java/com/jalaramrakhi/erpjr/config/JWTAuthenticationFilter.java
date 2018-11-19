@@ -51,7 +51,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             com.jalaramrakhi.erpjr.entity.User creds = new ObjectMapper().readValue(request.getInputStream(), com.jalaramrakhi.erpjr.entity.User.class);
             String username = creds.getUser_name();
             String password = creds.getUser_password();
-            Integer company = creds.getCompany().getCompany_id();
+            Long company = creds.getCompany().getCompany_id();
 
             String usernameDomain = String.format("%s%s%s", username.trim(),
                     String.valueOf(Character.LINE_SEPARATOR), company.toString());
@@ -85,11 +85,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             HttpServletResponse res,
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
+
+
         String token = Jwts.builder()
                 .setSubject(((User) auth.getPrincipal()).getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY_SECONDS))
                 .signWith(SignatureAlgorithm.HS512, SIGNING_KEY)
                 .compact();
-        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+//        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        res.getWriter().write(TOKEN_PREFIX + token);
     }
 }

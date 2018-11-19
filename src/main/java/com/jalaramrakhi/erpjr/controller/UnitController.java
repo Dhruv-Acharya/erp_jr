@@ -31,7 +31,7 @@ public class UnitController {
 
     // Get One Unit
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Unit> getSingleUnit(@PathVariable Integer id) {
+    public ResponseEntity<Unit> getSingleUnit(@PathVariable Long id) {
         return unitService.getSingleUnit(id);
     }
 
@@ -43,13 +43,13 @@ public class UnitController {
 
     // Update Unit with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Unit> updateUnit(@PathVariable Integer id, @RequestBody Unit unit) {
+    public ResponseEntity<Unit> updateUnit(@PathVariable Long id, @RequestBody Unit unit) {
         return unitService.updateUnit(id, unit);
     }
 
     // Delete Unit
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Unit> deleteUnit(@PathVariable Integer id) {
+    public ResponseEntity<Unit> deleteUnit(@PathVariable Long id) {
         return unitService.deleteUnit(id);
     }
 }

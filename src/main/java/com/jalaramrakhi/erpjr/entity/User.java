@@ -17,7 +17,7 @@ public class User {
 
 	@Id
 	@GeneratedValue
-	private Integer user_id;
+	private Long user_id;
 	@Column(name = "user_name", unique = true)
 	private String username;
 	private String user_password;
@@ -40,7 +40,7 @@ public class User {
 	/**
 	 * @return the user_id
 	 */
-	public Integer getUser_id() {
+	public Long getUser_id() {
 		return user_id;
 	}
 	/**
@@ -52,7 +52,7 @@ public class User {
 	/**
 	 * @param user_id the user_id to set
 	 */
-	public void setUser_id(Integer user_id) {
+	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
 	}
 	/**

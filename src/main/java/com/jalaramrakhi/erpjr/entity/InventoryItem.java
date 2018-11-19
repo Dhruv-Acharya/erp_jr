@@ -12,7 +12,7 @@ public class InventoryItem {
 
 	@Id
 	@GeneratedValue
-	private Integer item_id;
+	private Long item_id;
 	@NotNull
     private String item_name;
     private String item_description;
@@ -26,7 +26,7 @@ public class InventoryItem {
 	@JoinColumn(name = "category_id")
     private Category category;
 
-	public InventoryItem(Integer item_id, @NotNull String item_name, String item_description, double item_cost_price, double item_selling_price, double item_qty, Unit unit, Category category) {
+	public InventoryItem(Long item_id, @NotNull String item_name, String item_description, double item_cost_price, double item_selling_price, double item_qty, Unit unit, Category category) {
 		this.item_id = item_id;
 		this.item_name = item_name;
 		this.item_description = item_description;
@@ -67,13 +67,13 @@ public class InventoryItem {
 	/**
 	 * @return the item_id
 	 */
-	public Integer getItem_id() {
+	public Long getItem_id() {
 		return item_id;
 	}
 	/**
 	 * @param item_id the item_id to set
 	 */
-	public void setItem_id(Integer item_id) {
+	public void setItem_id(Long item_id) {
 		this.item_id = item_id;
 	}
 	/**

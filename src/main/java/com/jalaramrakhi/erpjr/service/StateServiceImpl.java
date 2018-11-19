@@ -35,7 +35,7 @@ public class StateServiceImpl implements StateService{
     }
 
     @Override
-    public ResponseEntity<State> getSingleState(Integer id) {
+    public ResponseEntity<State> getSingleState(Long id) {
         State getState = findStateIfExists(id);
         return new ResponseEntity<State>(getState, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class StateServiceImpl implements StateService{
     }
 
     @Override
-    public ResponseEntity<State> updateState(Integer id, State state) {
+    public ResponseEntity<State> updateState(Long id, State state) {
         State existingState = findStateIfExists(id);
 
         if(null != state.getState_name() && state.getState_name().length() > 0) {
@@ -71,7 +71,7 @@ public class StateServiceImpl implements StateService{
     }
 
     @Override
-    public ResponseEntity<State> deleteState(Integer id) {
+    public ResponseEntity<State> deleteState(Long id) {
         State existingState = findStateIfExists(id);
         stateRepository.delete(existingState);
         return new ResponseEntity<State>(HttpStatus.NO_CONTENT);
@@ -87,7 +87,7 @@ public class StateServiceImpl implements StateService{
         return resourcePath.toString();
     }
 
-    private State findStateIfExists(Integer id) {
+    private State findStateIfExists(Long id) {
         Optional<State> state = stateRepository.findById(id);
 
         if(state.isPresent()){

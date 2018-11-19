@@ -46,7 +46,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public ResponseEntity<Company> getSingleCompany(Integer id) {
+    public ResponseEntity<Company> getSingleCompany(Long id) {
         Company getCompany = findCompanyIfExists(id);
         return new ResponseEntity<Company>(getCompany, HttpStatus.OK);
     }
@@ -81,7 +81,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public ResponseEntity<Company> updateCompany(Integer id, Company companyUpdates) {
+    public ResponseEntity<Company> updateCompany(Long id, Company companyUpdates) {
         Company existingCompany = findCompanyIfExists(id);
 
         if(null != companyUpdates.getCompany_name() && companyUpdates.getCompany_name().length() > 0) {
@@ -113,7 +113,7 @@ public class CompanyServiceImpl implements CompanyService {
         return resourcePath.toString();
     }
 
-    private Company findCompanyIfExists(Integer id) {
+    private Company findCompanyIfExists(Long id) {
         Optional<Company> company = companyRepository.findById(id);
 
         if(company.isPresent()){

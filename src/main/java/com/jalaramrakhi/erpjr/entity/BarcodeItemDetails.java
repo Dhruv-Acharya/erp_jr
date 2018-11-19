@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 public class BarcodeItemDetails {
     @Id
     @GeneratedValue
-    private String barcode_id;
+    private Long barcode_id;
     @OneToOne
     @JoinColumn(name = "inventory_item_id")
     private InventoryItem inventoryItem;
@@ -20,18 +20,18 @@ public class BarcodeItemDetails {
     public BarcodeItemDetails() {
     }
 
-    public BarcodeItemDetails(String barcode_id, InventoryItem inventoryItem, double item_price, double item_quantity) {
+    public BarcodeItemDetails(Long barcode_id, InventoryItem inventoryItem, double item_price, double item_quantity) {
         this.barcode_id = barcode_id;
         this.inventoryItem = inventoryItem;
         this.item_price = item_price;
         this.item_quantity = item_quantity;
     }
 
-    public String getBarcode_id() {
+    public Long getBarcode_id() {
         return barcode_id;
     }
 
-    public void setBarcode_id(String barcode_id) {
+    public void setBarcode_id(Long barcode_id) {
         this.barcode_id = barcode_id;
     }
 

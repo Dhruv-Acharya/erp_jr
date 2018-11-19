@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface InventoryItemService {
     public ResponseEntity<List<InventoryItem>> getAllInventoryItems();
-    public ResponseEntity<InventoryItem> getSingleInventoryItem(Integer id);
+    public ResponseEntity<InventoryItem> getSingleInventoryItem(Long id);
     public ResponseEntity<InventoryItem> addNewInventoryItem(InventoryItem inventoryItem, HttpServletRequest request);
-    public ResponseEntity<InventoryItem> updateInventoryItem(Integer id, InventoryItem inventoryItem);
-    public ResponseEntity<InventoryItem> deleteInventoryItem(Integer id);
+    public ResponseEntity<InventoryItem> updateInventoryItem(Long id, InventoryItem inventoryItem);
+    public ResponseEntity<InventoryItem> deleteInventoryItem(Long id);
 }

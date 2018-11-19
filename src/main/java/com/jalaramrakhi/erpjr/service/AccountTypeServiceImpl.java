@@ -35,7 +35,7 @@ public class AccountTypeServiceImpl implements AccountTypeService{
     }
 
     @Override
-    public ResponseEntity<AccountType> getSingleAccountType(Integer id) {
+    public ResponseEntity<AccountType> getSingleAccountType(Long id) {
         AccountType getAccountType = findAccountTypeIfExists(id);
         return new ResponseEntity<AccountType>(getAccountType, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class AccountTypeServiceImpl implements AccountTypeService{
     }
 
     @Override
-    public ResponseEntity<AccountType> updateAccountType(Integer id, AccountType accountType) {
+    public ResponseEntity<AccountType> updateAccountType(Long id, AccountType accountType) {
         AccountType existingAccountType = findAccountTypeIfExists(id);
 
         if(null != accountType.getAccount_type() && accountType.getAccount_type().length() > 0) {
@@ -71,7 +71,7 @@ public class AccountTypeServiceImpl implements AccountTypeService{
     }
 
     @Override
-    public ResponseEntity<AccountType> deleteAccountType(Integer id) {
+    public ResponseEntity<AccountType> deleteAccountType(Long id) {
         AccountType existingAccountType = findAccountTypeIfExists(id);
         accountTypeRepository.delete(existingAccountType);
         return new ResponseEntity<AccountType>(HttpStatus.NO_CONTENT);
@@ -87,7 +87,7 @@ public class AccountTypeServiceImpl implements AccountTypeService{
         return resourcePath.toString();
     }
 
-    private AccountType findAccountTypeIfExists(Integer id) {
+    private AccountType findAccountTypeIfExists(Long id) {
         Optional<AccountType> accountType = accountTypeRepository.findById(id);
 
         if(accountType.isPresent()){

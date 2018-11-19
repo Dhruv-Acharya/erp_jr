@@ -35,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public ResponseEntity<Category> getSingleCategory(Integer id) {
+    public ResponseEntity<Category> getSingleCategory(Long id) {
         Category getCategory = findCategoryIfExists(id);
         return new ResponseEntity<Category>(getCategory, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public ResponseEntity<Category> updateCategory(Integer id, Category category) {
+    public ResponseEntity<Category> updateCategory(Long id, Category category) {
         Category existingCategory = findCategoryIfExists(id);
 
         if(null != category.getCategory_name()) {
@@ -71,7 +71,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public ResponseEntity<Category> deleteCategory(Integer id) {
+    public ResponseEntity<Category> deleteCategory(Long id) {
         Category existingCategory = findCategoryIfExists(id);
         categoryRepository.delete(existingCategory);
         return new ResponseEntity<Category>(HttpStatus.NO_CONTENT);
@@ -87,7 +87,7 @@ public class CategoryServiceImpl implements CategoryService{
         return resourcePath.toString();
     }
 
-    private Category findCategoryIfExists(Integer id) {
+    private Category findCategoryIfExists(Long id) {
         Optional<Category> category = categoryRepository.findById(id);
 
         if(category.isPresent()){

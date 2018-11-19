@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface AddressService {
     public ResponseEntity<List<Address>> getAllAddresss();
-    public ResponseEntity<Address> getSingleAddress(Integer id);
+    public ResponseEntity<Address> getSingleAddress(Long id);
     public ResponseEntity<Address> addNewAddress(Address address, HttpServletRequest request);
-    public ResponseEntity<Address> updateAddress(Integer id, Address address);
-    public ResponseEntity<Address> deleteAddress(Integer id);
+    public ResponseEntity<Address> updateAddress(Long id, Address address);
+    public ResponseEntity<Address> deleteAddress(Long id);
 }

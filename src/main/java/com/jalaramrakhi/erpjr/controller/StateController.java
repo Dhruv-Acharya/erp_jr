@@ -30,7 +30,7 @@ public class StateController {
 
     // Get One State
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<State> getSingleState(@PathVariable Integer id) {
+    public ResponseEntity<State> getSingleState(@PathVariable Long id) {
         return stateService.getSingleState(id);
     }
 
@@ -42,13 +42,13 @@ public class StateController {
 
     // Update State with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<State> updateState(@PathVariable Integer id, @RequestBody State state) {
+    public ResponseEntity<State> updateState(@PathVariable Long id, @RequestBody State state) {
         return stateService.updateState(id, state);
     }
 
     // Delete State
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<State> deleteState(@PathVariable Integer id) {
+    public ResponseEntity<State> deleteState(@PathVariable Long id) {
         return stateService.deleteState(id);
     }
 }

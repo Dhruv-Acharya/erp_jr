@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 public class Address {
     @Id
     @GeneratedValue
-    private int addresss_id;
+    private Long addresss_id;
     private String address_line;
     @OneToOne
     @JoinColumn(name = "state_id")
@@ -24,11 +24,11 @@ public class Address {
         this.state = state;
     }
 
-    public int getAddress_id() {
+    public Long getAddress_id() {
         return addresss_id;
     }
 
-    public void setAddress_id(int addresss_id) {
+    public void setAddress_id(Long addresss_id) {
         this.addresss_id = addresss_id;
     }
 

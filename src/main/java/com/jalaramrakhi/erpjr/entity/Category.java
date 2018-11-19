@@ -7,14 +7,14 @@ import javax.persistence.Id;
 public class Category {
 
 	@Id
-	private Integer HSN_code;
+	private Long HSN_code;
 	private String category_name;
 	private double tax_rate;
 
 	public Category() {
 	}
 
-	public Category(Integer HSN_code, String category_name, double tax_rate) {
+	public Category(Long HSN_code, String category_name, double tax_rate) {
 		this.HSN_code = HSN_code;
 		this.category_name = category_name;
 		this.tax_rate = tax_rate;
@@ -23,13 +23,13 @@ public class Category {
 	/**
 	 * @return the hSN_code
 	 */
-	public Integer getHSN_code() {
+	public Long getHSN_code() {
 		return HSN_code;
 	}
 	/**
 	 * @param hSN_code the hSN_code to set
 	 */
-	public void setHSN_code(Integer hSN_code) {
+	public void setHSN_code(Long hSN_code) {
 		HSN_code = hSN_code;
 	}
 	/**

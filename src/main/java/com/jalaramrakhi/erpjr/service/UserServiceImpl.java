@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity<User> getSingleUser(Integer id) {
+    public ResponseEntity<User> getSingleUser(Long id) {
         User getUser = findUserIfExists(id);
         return new ResponseEntity<User>(getUser, HttpStatus.OK);
     }
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity<User> updateUser(Integer id, User userUpdates) {
+    public ResponseEntity<User> updateUser(Long id, User userUpdates) {
         User existingUser = findUserIfExists(id);
 
         if(userUpdates.getUser_name() != null && userUpdates.getUser_name().length() > 0) {
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity<User> deleteUser(Integer id) {
+    public ResponseEntity<User> deleteUser(Long id) {
         User existingUser = findUserIfExists(id);
         userRepository.delete(existingUser);
         return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService{
         return resourcePath.toString();
     }
 
-    private User findUserIfExists(Integer id) {
+    private User findUserIfExists(Long id) {
         Optional<User> user = userRepository.findById(id);
         if(user.isPresent()) {
             return user.get();

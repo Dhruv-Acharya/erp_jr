@@ -30,7 +30,7 @@ public class AddressController {
 
     // Get One Address
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Address> getSingleAddress(@PathVariable Integer id) {
+    public ResponseEntity<Address> getSingleAddress(@PathVariable Long id) {
         return addressService.getSingleAddress(id);
     }
 
@@ -42,13 +42,13 @@ public class AddressController {
 
     // Update Address with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Address> updateAddress(@PathVariable Integer id, @RequestBody Address address) {
+    public ResponseEntity<Address> updateAddress(@PathVariable Long id, @RequestBody Address address) {
         return addressService.updateAddress(id, address);
     }
 
     // Delete Address
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Address> deleteAddress(@PathVariable Integer id) {
+    public ResponseEntity<Address> deleteAddress(@PathVariable Long id) {
         return addressService.deleteAddress(id);
     }
 }

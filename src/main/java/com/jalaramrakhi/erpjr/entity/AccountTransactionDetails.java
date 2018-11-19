@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 public class AccountTransactionDetails {
 
 	@Id
-	private Integer transaction_id;
+	private Long transaction_id;
 	@ManyToOne
 	private Account account;
 	private double transaction_amount;
@@ -18,11 +18,11 @@ public class AccountTransactionDetails {
 	private String transaction_narration;
 
 
-	public Integer getTransaction_id() {
+	public Long getTransaction_id() {
 		return transaction_id;
 	}
 
-	public void setTransaction_id(Integer transaction_id) {
+	public void setTransaction_id(Long transaction_id) {
 		this.transaction_id = transaction_id;
 	}
 	/**

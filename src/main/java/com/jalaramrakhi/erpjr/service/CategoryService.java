@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface CategoryService {
     public ResponseEntity<List<Category>> getAllCategories();
-    public ResponseEntity<Category> getSingleCategory(Integer id);
+    public ResponseEntity<Category> getSingleCategory(Long id);
     public ResponseEntity<Category> addNewCategory(Category category, HttpServletRequest request);
-    public ResponseEntity<Category> updateCategory(Integer id, Category category);
-    public ResponseEntity<Category> deleteCategory(Integer id);
+    public ResponseEntity<Category> updateCategory(Long id, Category category);
+    public ResponseEntity<Category> deleteCategory(Long id);
 }
