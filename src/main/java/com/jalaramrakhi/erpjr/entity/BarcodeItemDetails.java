@@ -12,7 +12,7 @@ public class BarcodeItemDetails {
     @GeneratedValue
     private Long barcode_id;
     @OneToOne
-    @JoinColumn(name = "inventory_item_id")
+    @JoinColumn(name = "item_id")
     private InventoryItem inventoryItem;
     private double item_price;
     private double item_quantity;

@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping(value = "/barcodeItemDetails")
 @RestController
 public class BarcodeItemDetailsController {
-    
+
     @Autowired
     private BarcodeItemDetailService barcodeItemDetailService;
 

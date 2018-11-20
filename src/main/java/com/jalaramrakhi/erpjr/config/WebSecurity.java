@@ -1,9 +1,7 @@
 package com.jalaramrakhi.erpjr.config;
 
 import com.jalaramrakhi.erpjr.service.UserDetailsServiceImpl;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,6 +9,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -23,16 +26,21 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @Bean
-    CorsFilter corsFilter() {
-        CorsFilter filter = new CorsFilter();
-        return filter;
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .addFilterBefore(corsFilter(), JWTAuthenticationFilter.class)
+                .cors().configurationSource(new CorsConfigurationSource() {
+                    @Override
+                    public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                        CorsConfiguration config = new CorsConfiguration();
+                        config.setAllowedHeaders(Collections.singletonList("*"));
+                        config.setAllowedMethods(Collections.singletonList("*"));
+                        config.addAllowedOrigin("*");
+                        config.setAllowCredentials(true);
+                        return config;
+                    }
+                })
+                .and()
                 .csrf().disable().authorizeRequests()
                 .antMatchers("/login","/company","/company/*").permitAll()
                 .anyRequest().authenticated()

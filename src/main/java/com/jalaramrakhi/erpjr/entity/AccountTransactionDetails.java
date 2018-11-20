@@ -19,6 +19,15 @@ public class AccountTransactionDetails {
 	private Date transaction_date;
 	private String transaction_narration;
 
+	public AccountTransactionDetails() {
+	}
+
+	public AccountTransactionDetails(Account account, double transaction_amount, Date transaction_date, String transaction_narration) {
+		this.account = account;
+		this.transaction_amount = transaction_amount;
+		this.transaction_date = transaction_date;
+		this.transaction_narration = transaction_narration;
+	}
 
 	public Long getTransaction_id() {
 		return transaction_id;

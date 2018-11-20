@@ -3,6 +3,7 @@ package com.jalaramrakhi.erpjr.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -10,6 +11,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Invoice {
 	@Id
+	@GeneratedValue
 	private Long invoice_number;
 	@OneToOne
 	private Account debit_account;
@@ -28,6 +30,31 @@ public class Invoice {
 	private int invoice_phone_number;
 	@OneToOne
 	private Address address;
+
+	public Invoice() {
+	}
+
+	public Invoice(Account debit_account, double invoice_amount, Date invoice_date, String invoice_narration, Account credit_account, User preparedBy, Company company, int invoice_LR_number, String invoice_transport, int invoice_phone_number, Address address) {
+		this.debit_account = debit_account;
+		this.invoice_amount = invoice_amount;
+		this.invoice_date = invoice_date;
+		this.invoice_narration = invoice_narration;
+		this.credit_account = credit_account;
+		this.preparedBy = preparedBy;
+		this.company = company;
+		this.invoice_LR_number = invoice_LR_number;
+		this.invoice_transport = invoice_transport;
+		this.invoice_phone_number = invoice_phone_number;
+		this.address = address;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public User getPreparedBy() {
 		return preparedBy;
