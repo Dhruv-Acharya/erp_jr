@@ -28,7 +28,7 @@ public class BarcodeItemDetailServiceImpl implements BarcodeItemDetailService{
     }
 
     @Override
-    public ResponseEntity<List<BarcodeItemDetails>> getAllBarcodeItemDetailss() {
+    public ResponseEntity<List<BarcodeItemDetails>> getAllBarcodeItemDetails() {
         List<BarcodeItemDetails> allBarcodeItemDetails = barcodeItemDetailRepository.findAll();
 
         return new ResponseEntity<List<BarcodeItemDetails>>(allBarcodeItemDetails, HttpStatus.OK);
