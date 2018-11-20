@@ -2,6 +2,7 @@ package com.jalaramrakhi.erpjr.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalaramrakhi.erpjr.entity.Company;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,6 +27,7 @@ import static com.jalaramrakhi.erpjr.config.Constants.TOKEN_PREFIX;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
+    private com.jalaramrakhi.erpjr.entity.User creds;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -48,7 +50,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private UsernamePasswordAuthenticationToken getAuthRequest(
             HttpServletRequest request) {
         try {
-            com.jalaramrakhi.erpjr.entity.User creds = new ObjectMapper().readValue(request.getInputStream(), com.jalaramrakhi.erpjr.entity.User.class);
+            creds = new ObjectMapper().readValue(request.getInputStream(), com.jalaramrakhi.erpjr.entity.User.class);
             String username = creds.getUser_name();
             String password = creds.getUser_password();
             Long company = creds.getCompany().getCompany_id();
@@ -86,9 +88,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
 
-
-        String token = Jwts.builder()
-                .setSubject(((User) auth.getPrincipal()).getUsername())
+              String token = Jwts.builder()
+                .setSubject(creds.getUser_name())
                 .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY_SECONDS))
                 .signWith(SignatureAlgorithm.HS512, SIGNING_KEY)
                 .compact();

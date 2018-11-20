@@ -3,6 +3,7 @@ package com.jalaramrakhi.erpjr.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -10,6 +11,7 @@ import javax.persistence.ManyToOne;
 public class AccountTransactionDetails {
 
 	@Id
+	@GeneratedValue
 	private Long transaction_id;
 	@ManyToOne
 	private Account account;
