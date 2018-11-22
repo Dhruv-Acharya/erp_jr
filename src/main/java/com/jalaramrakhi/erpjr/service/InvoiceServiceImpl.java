@@ -3,6 +3,9 @@ package com.jalaramrakhi.erpjr.service;
 import com.jalaramrakhi.erpjr.Exceptions.InvoiceMissingInformationException;
 import com.jalaramrakhi.erpjr.Exceptions.InvoiceNotFoundException;
 import com.jalaramrakhi.erpjr.entity.Invoice;
+import com.jalaramrakhi.erpjr.entity.InvoiceItem;
+import com.jalaramrakhi.erpjr.repository.AccountTransactionDetailsRepository;
+import com.jalaramrakhi.erpjr.repository.GSTTransactionDetailsRepository;
 import com.jalaramrakhi.erpjr.repository.InvoiceRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -20,11 +24,17 @@ import java.util.Optional;
 public class InvoiceServiceImpl implements InvoiceService{
 
     private InvoiceRepository invoiceRepository;
+    private GSTTransactionDetailsRepository gstTransactionDetailsRepository;
+    private AccountTransactionDetailsRepository accountTransactionDetailsRepository;
 
     @Autowired
-    public InvoiceServiceImpl(InvoiceRepository invoiceRepository) {
+    public InvoiceServiceImpl(InvoiceRepository invoiceRepository, GSTTransactionDetailsRepository gstTransactionDetailsRepository, AccountTransactionDetailsRepository accountTransactionDetailsRepository) {
         Assert.notNull(invoiceRepository, "InvoiceRepository must not be null!");
+        Assert.notNull(gstTransactionDetailsRepository, "GSTTransactionDetailsRepository must not be null!");
+        Assert.notNull(accountTransactionDetailsRepository, "AccountTransactionDetailsRepository must not be null!");
         this.invoiceRepository = invoiceRepository;
+        this.accountTransactionDetailsRepository = accountTransactionDetailsRepository;
+        this.gstTransactionDetailsRepository = gstTransactionDetailsRepository;
     }
 
     @Override
@@ -41,8 +51,11 @@ public class InvoiceServiceImpl implements InvoiceService{
     }
 
     @Override
-    public ResponseEntity<Invoice> addNewInvoice(Invoice invoice, HttpServletRequest request) {
+    public ResponseEntity<Invoice> addNewInvoice(Invoice invoice, HttpServletRequest request, @RequestBody List<InvoiceItem> body) {
         if(null != invoice.getCompany() && invoice.getDebit_account() != null && invoice.getCredit_account() != null) {
+
+            boolean isAdded = addInvoiceItem(body);
+
             invoiceRepository.saveAndFlush(invoice);
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.set("Location", invoiceUrlHelper(invoice, request));
@@ -96,5 +109,12 @@ public class InvoiceServiceImpl implements InvoiceService{
         else {
             throw new InvoiceNotFoundException();
         }
+    }
+
+    private boolean addInvoiceItem(List<InvoiceItem> body) {
+//        int i, len = body.size();
+//        for(i = 0; i < len; i++) {
+//            if(invoiceRepository.saveAll(() -> body<InvoiceItem>));
+//        }
     }
 }

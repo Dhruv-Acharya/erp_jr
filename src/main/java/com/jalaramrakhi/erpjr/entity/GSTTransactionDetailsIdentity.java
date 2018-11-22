@@ -9,11 +9,9 @@ import java.util.Objects;
 @Embeddable
 public class GSTTransactionDetailsIdentity implements Serializable {
     @NotNull
-    @OneToOne
     private Category category;
 
     @NotNull
-    @OneToOne
     private Invoice invoice;
 
     public GSTTransactionDetailsIdentity(@NotNull Category category, @NotNull Invoice invoice) {

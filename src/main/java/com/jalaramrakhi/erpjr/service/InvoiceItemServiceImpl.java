@@ -2,8 +2,11 @@ package com.jalaramrakhi.erpjr.service;
 
 import com.jalaramrakhi.erpjr.Exceptions.InvoiceItemMissingInformationException;
 import com.jalaramrakhi.erpjr.Exceptions.InvoiceItemNotFoundException;
+import com.jalaramrakhi.erpjr.entity.AccountTransactionDetails;
 import com.jalaramrakhi.erpjr.entity.InvoiceItem;
 import com.jalaramrakhi.erpjr.entity.InvoiceItemIdentity;
+import com.jalaramrakhi.erpjr.repository.AccountTransactionDetailsRepository;
+import com.jalaramrakhi.erpjr.repository.GSTTransactionDetailsRepository;
 import com.jalaramrakhi.erpjr.repository.InvoiceItemRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,8 @@ public class InvoiceItemServiceImpl implements InvoiceItemService{
     @Autowired
     public InvoiceItemServiceImpl(InvoiceItemRepository invoiceItemRepository) {
         Assert.notNull(invoiceItemRepository, "InvoiceItemRepository must not be null!");
-        this.invoiceItemRepository = invoiceItemRepository;
+                this.invoiceItemRepository = invoiceItemRepository;
+
     }
 
     @Override
@@ -43,6 +47,7 @@ public class InvoiceItemServiceImpl implements InvoiceItemService{
     public ResponseEntity<InvoiceItem> addNewInvoiceItem(InvoiceItem invoiceItem, HttpServletRequest request) {
         if(invoiceItem.getItem_quantity() > 0 && invoiceItem.getItem_price() > 0) {
             invoiceItemRepository.saveAndFlush(invoiceItem);
+
 //            HttpHeaders responseHeaders = new HttpHeaders();
 //            responseHeaders.set("Location", invoiceItemUrlHelper(invoiceItem, request));
             return new ResponseEntity<InvoiceItem>(invoiceItem, HttpStatus.CREATED);
