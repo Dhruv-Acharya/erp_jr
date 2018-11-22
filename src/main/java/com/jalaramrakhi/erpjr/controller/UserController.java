@@ -33,6 +33,12 @@ public class UserController {
         return userService.createNewUser(user, req);
     }
 
+    // Get One User by Username
+    @RequestMapping(value = "/{username}/{company_id}", method = RequestMethod.GET)
+    public ResponseEntity<User> getSingleUserbyUsername(@PathVariable String username, @PathVariable Long company_id) {
+        return userService.getSingleUserbyUsername(username, company_id);
+    }
+
     // Update User with PUT
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {

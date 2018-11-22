@@ -3,14 +3,18 @@ package com.jalaramrakhi.erpjr.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jalaramrakhi.erpjr.Utils.LocalstorageWrapper;
 import com.jalaramrakhi.erpjr.entity.Company;
+import com.jalaramrakhi.erpjr.entity.User;
+import com.jalaramrakhi.erpjr.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -33,6 +37,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
+
 
     @Override
     public Authentication attemptAuthentication(
@@ -89,7 +94,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
         LocalstorageWrapper localstorageWrapper = new LocalstorageWrapper();
-
+//        System.out.println(userRepository.toString());
+//        User newUser = userRepository.findByUsername(creds.getUser_name());
         String token = Jwts.builder()
                 .setSubject(creds.getUser_name())
                 .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY_SECONDS))
