@@ -50,7 +50,7 @@ public class InvoiceServiceImpl implements InvoiceService{
     public ResponseEntity<Invoice> addNewInvoice(Invoice invoice, HttpServletRequest request, @RequestBody List<InvoiceItem> body) {
         if(null != invoice.getCompany() && invoice.getDebit_account() != null && invoice.getCredit_account() != null) {
 
-//            boolean isAdded = addInvoiceItem(body);
+            System.out.println(body.toString());
 
             invoiceRepository.saveAndFlush(invoice);
             HttpHeaders responseHeaders = new HttpHeaders();

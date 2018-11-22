@@ -18,7 +18,7 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Long user_id;
-	@Column(name = "user_name", unique = true)
+	@Column(name = "user_name")
 	private String username;
 	private String user_password;
 	@Transient
@@ -95,5 +95,14 @@ public class User {
 		this.company = company;
 	}
 
-
+	@Override
+	public String toString() {
+		return "{" +
+				"\"user_id\" : \"" + user_id + "\"" +
+				", \"username\" : \"" + username + '\"' +
+				", \"user_password\" : \"" + user_password + '\"' +
+				", \"user_confirm_password\" : \"" + user_confirm_password + '\"' +
+				", \"company\" : " + company.toString() +
+				'}';
+	}
 }

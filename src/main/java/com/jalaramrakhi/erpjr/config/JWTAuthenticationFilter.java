@@ -1,6 +1,7 @@
 package com.jalaramrakhi.erpjr.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jalaramrakhi.erpjr.Utils.LocalstorageWrapper;
 import com.jalaramrakhi.erpjr.entity.Company;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -87,13 +88,17 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             HttpServletResponse res,
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
+        LocalstorageWrapper localstorageWrapper = new LocalstorageWrapper();
 
-              String token = Jwts.builder()
+        String token = Jwts.builder()
                 .setSubject(creds.getUser_name())
                 .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY_SECONDS))
                 .signWith(SignatureAlgorithm.HS512, SIGNING_KEY)
                 .compact();
 //        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
-        res.getWriter().write(TOKEN_PREFIX + token);
+        localstorageWrapper.setCompany(creds.getCompany());
+        localstorageWrapper.setToken(token);
+        localstorageWrapper.setUser(creds);
+        res.getWriter().write(localstorageWrapper.toString());
     }
 }

@@ -1,5 +1,6 @@
 package com.jalaramrakhi.erpjr.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ public class Company implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long company_id;
+	@Column(unique = true)
 	private String company_name;
 
 	public Company(String company_name) {
@@ -42,5 +44,12 @@ public class Company implements Serializable {
 	public void setCompany_name(String company_name) {
 		this.company_name = company_name;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "{" +
+				"\"company_id\" : \"" + company_id + "\"" +
+				", \"company_name\" :\"" + company_name + '\"' +
+				'}';
+	}
 }
