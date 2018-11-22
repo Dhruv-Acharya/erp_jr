@@ -2,11 +2,8 @@ package com.jalaramrakhi.erpjr.service;
 
 import com.jalaramrakhi.erpjr.Exceptions.InvoiceItemMissingInformationException;
 import com.jalaramrakhi.erpjr.Exceptions.InvoiceItemNotFoundException;
-import com.jalaramrakhi.erpjr.entity.AccountTransactionDetails;
 import com.jalaramrakhi.erpjr.entity.InvoiceItem;
 import com.jalaramrakhi.erpjr.entity.InvoiceItemIdentity;
-import com.jalaramrakhi.erpjr.repository.AccountTransactionDetailsRepository;
-import com.jalaramrakhi.erpjr.repository.GSTTransactionDetailsRepository;
 import com.jalaramrakhi.erpjr.repository.InvoiceItemRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
