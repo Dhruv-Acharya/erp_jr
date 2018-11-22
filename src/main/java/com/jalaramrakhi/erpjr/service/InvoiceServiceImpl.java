@@ -5,7 +5,6 @@ import com.jalaramrakhi.erpjr.Exceptions.InvoiceNotFoundException;
 import com.jalaramrakhi.erpjr.entity.Invoice;
 import com.jalaramrakhi.erpjr.entity.InvoiceItem;
 import com.jalaramrakhi.erpjr.repository.AccountTransactionDetailsRepository;
-//import com.jalaramrakhi.erpjr.repository.GSTTransactionDetailsRepository;
 import com.jalaramrakhi.erpjr.repository.InvoiceRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +23,14 @@ import java.util.Optional;
 public class InvoiceServiceImpl implements InvoiceService{
 
     private InvoiceRepository invoiceRepository;
-//    private GSTTransactionDetailsRepository gstTransactionDetailsRepository;
     private AccountTransactionDetailsRepository accountTransactionDetailsRepository;
 
     @Autowired
     public InvoiceServiceImpl(InvoiceRepository invoiceRepository, AccountTransactionDetailsRepository accountTransactionDetailsRepository) {
         Assert.notNull(invoiceRepository, "InvoiceRepository must not be null!");
-//        Assert.notNull(gstTransactionDetailsRepository, "GSTTransactionDetailsRepository must not be null!");
         Assert.notNull(accountTransactionDetailsRepository, "AccountTransactionDetailsRepository must not be null!");
         this.invoiceRepository = invoiceRepository;
         this.accountTransactionDetailsRepository = accountTransactionDetailsRepository;
-//        this.gstTransactionDetailsRepository = gstTransactionDetailsRepository;
     }
 
     @Override
