@@ -15,7 +15,7 @@ public class InvoiceItemIdentity implements Serializable {
 
     @NotNull
     @OneToOne
-    @JoinColumn(name = "inventory_item_id")
+    @JoinColumn(name = "item_id")
     private InventoryItem inventoryItem;
 
     public InvoiceItemIdentity(@NotNull Invoice invoice, @NotNull InventoryItem inventoryItem) {

@@ -91,14 +91,15 @@ public class InvoiceServiceImpl implements InvoiceService{
             InvoiceItemIdentity invoiceItemIdentity = new InvoiceItemIdentity();
             InventoryItem inventoryItem;
             InvoiceItem invoiceItem = new InvoiceItem();
-            for (int i = 0; i < invoiceWrapper.getInvoiceItems().size(); i++) {
-                inventoryItem = inventoryItemRepository.getOne(invoiceWrapper.getInvoiceItems().get(i).getInvoiceItemIdentity().getInventoryItem().getItem_id());
+//            System.out.println(invoiceWrapper.getInvoiceItemsWrapper());
+            for (int i = 0; i < invoiceWrapper.getInvoiceItemsWrapper().size(); i++) {
+                inventoryItem = inventoryItemRepository.getOne(invoiceWrapper.getInvoiceItemsWrapper().get(i).getInventoryItem_id());
                 invoiceItemIdentity.setInventoryItem(inventoryItem);
                 invoiceItemIdentity.setInvoice(savedInvoice);
                 invoiceItem.setInvoiceItemIdentity(invoiceItemIdentity);
-                invoiceItem.setItem_price(invoiceWrapper.getInvoiceItems().get(i).getItem_price());
-                invoiceItem.setItem_quantity(invoiceWrapper.getInvoiceItems().get(i).getItem_quantity());
-                invoiceItem.setUnit(invoiceWrapper.getInvoiceItems().get(i).getUnit());
+                invoiceItem.setItem_price(invoiceWrapper.getInvoiceItemsWrapper().get(i).getItem_price());
+                invoiceItem.setItem_quantity(invoiceWrapper.getInvoiceItemsWrapper().get(i).getItem_quantity());
+                invoiceItem.setUnit(invoiceWrapper.getInvoiceItemsWrapper().get(i).getUnit());
 
                 inventoryItem.setItem_qty(inventoryItem.getItem_qty()- invoiceItem.getItem_quantity());
 

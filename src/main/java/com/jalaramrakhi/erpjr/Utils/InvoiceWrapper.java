@@ -21,12 +21,12 @@ public class InvoiceWrapper {
     private String invoice_transport;
     private Long invoice_phone_number;
     private Address address;
-    private List<InvoiceItem> invoiceItems;
+    private List<InvoiceItemWrapper> invoiceItemsWrapper;
 
     public InvoiceWrapper() {
     }
 
-    public InvoiceWrapper(Account debit_account, Long invoice_amount, Date invoice_date, String invoice_narration, Account credit_account, User preparedBy, Company company, Long invoice_LR_number, String invoice_transport, Long invoice_phone_number, Address address, List<InvoiceItem> invoiceItems) {
+    public InvoiceWrapper(Account debit_account, Long invoice_amount, Date invoice_date, String invoice_narration, Account credit_account, User preparedBy, Company company, Long invoice_LR_number, String invoice_transport, Long invoice_phone_number, Address address, List<InvoiceItemWrapper> invoiceItemsWrapper) {
         this.debit_account = debit_account;
         this.invoice_amount = invoice_amount;
         this.invoice_date = invoice_date;
@@ -38,7 +38,7 @@ public class InvoiceWrapper {
         this.invoice_transport = invoice_transport;
         this.invoice_phone_number = invoice_phone_number;
         this.address = address;
-        this.invoiceItems = invoiceItems;
+        this.invoiceItemsWrapper = invoiceItemsWrapper;
     }
 
     public Account getDebit_account() {
@@ -129,12 +129,12 @@ public class InvoiceWrapper {
         this.address = address;
     }
 
-    public List<InvoiceItem> getInvoiceItems() {
-        return invoiceItems;
+    public List<InvoiceItemWrapper> getInvoiceItemsWrapper() {
+        return invoiceItemsWrapper;
     }
 
-    public void setInvoiceItems(List<InvoiceItem> invoiceItems) {
-        this.invoiceItems = invoiceItems;
+    public void setInvoiceItemsWrapper(List<InvoiceItemWrapper> invoiceItemsWrapper) {
+        this.invoiceItemsWrapper = invoiceItemsWrapper;
     }
 
     @Override
@@ -151,7 +151,7 @@ public class InvoiceWrapper {
                 ", invoice_transport='" + invoice_transport + '\'' +
                 ", invoice_phone_number=" + invoice_phone_number +
                 ", address=" + address +
-                ", invoiceItems=" + invoiceItems +
+                ", invoiceItems=" + invoiceItemsWrapper +
                 '}';
     }
 }

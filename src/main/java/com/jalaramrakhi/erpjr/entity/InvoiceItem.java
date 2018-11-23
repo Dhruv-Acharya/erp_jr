@@ -11,17 +11,17 @@ public class InvoiceItem {
 	@EmbeddedId
 	private InvoiceItemIdentity invoiceItemIdentity;
 
-	private int item_quantity;
-	private double item_price;
+	private Long item_quantity;
+	private Long item_price;
 	@OneToOne
     @JoinColumn(name = "unit_id")
 	private Unit unit;
-	private double tax;
+	private Long tax;
 
 	public InvoiceItem() {
 	}
 
-	public InvoiceItem(InvoiceItemIdentity invoiceItemIdentity, int item_quantity, double item_price, Unit unit, double tax) {
+	public InvoiceItem(InvoiceItemIdentity invoiceItemIdentity, Long item_quantity, Long item_price, Unit unit, Long tax) {
 		this.invoiceItemIdentity = invoiceItemIdentity;
 		this.item_quantity = item_quantity;
 		this.item_price = item_price;
@@ -40,25 +40,25 @@ public class InvoiceItem {
 	/**
 	 * @return the item_quantity
 	 */
-	public int getItem_quantity() {
+	public Long getItem_quantity() {
 		return item_quantity;
 	}
 	/**
 	 * @param item_quantity the item_quantity to set
 	 */
-	public void setItem_quantity(int item_quantity) {
+	public void setItem_quantity(Long item_quantity) {
 		this.item_quantity = item_quantity;
 	}
 	/**
 	 * @return the item_price
 	 */
-	public double getItem_price() {
+	public Long getItem_price() {
 		return item_price;
 	}
 	/**
 	 * @param item_price the item_price to set
 	 */
-	public void setItem_price(double item_price) {
+	public void setItem_price(Long item_price) {
 		this.item_price = item_price;
 	}
 	/**
@@ -76,13 +76,13 @@ public class InvoiceItem {
 	/**
 	 * @return the tax
 	 */
-	public double getTax() {
+	public Long getTax() {
 		return tax;
 	}
 	/**
 	 * @param tax the tax to set
 	 */
-	public void setTax(double tax) {
+	public void setTax(Long tax) {
 		this.tax = tax;
 	}
 }
