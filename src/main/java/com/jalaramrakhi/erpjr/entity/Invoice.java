@@ -15,7 +15,7 @@ public class Invoice {
 	private Long invoice_number;
 	@OneToOne
 	private Account debit_account;
-    private double invoice_amount;
+    private Long invoice_amount;
     private Date invoice_date;
     private String invoice_narration;
     @OneToOne
@@ -25,16 +25,16 @@ public class Invoice {
     @OneToOne
 	@JoinColumn(name = "company_id")
 	private Company company;
-	private int invoice_LR_number;
+	private Long invoice_LR_number;
 	private String invoice_transport;
-	private int invoice_phone_number;
+	private Long invoice_phone_number;
 	@OneToOne
 	private Address address;
 
 	public Invoice() {
 	}
 
-	public Invoice(Account debit_account, double invoice_amount, Date invoice_date, String invoice_narration, Account credit_account, User preparedBy, Company company, int invoice_LR_number, String invoice_transport, int invoice_phone_number, Address address) {
+	public Invoice(Account debit_account, Long invoice_amount, Date invoice_date, String invoice_narration, Account credit_account, User preparedBy, Company company, Long invoice_LR_number, String invoice_transport, Long invoice_phone_number, Address address) {
 		this.debit_account = debit_account;
 		this.invoice_amount = invoice_amount;
 		this.invoice_date = invoice_date;
@@ -113,13 +113,13 @@ public class Invoice {
 	/**
 	 * @return the invoice_amount
 	 */
-	public double getInvoice_amount() {
+	public Long getInvoice_amount() {
 		return invoice_amount;
 	}
 	/**
 	 * @param invoice_amount the invoice_amount to set
 	 */
-	public void setInvoice_amount(double invoice_amount) {
+	public void setInvoice_amount(Long invoice_amount) {
 		this.invoice_amount = invoice_amount;
 	}
 	/**
@@ -149,13 +149,13 @@ public class Invoice {
 	/**
 	 * @return the invoice_LR_number
 	 */
-	public int getInvoice_LR_number() {
+	public Long getInvoice_LR_number() {
 		return invoice_LR_number;
 	}
 	/**
 	 * @param invoice_LR_number the invoice_LR_number to set
 	 */
-	public void setInvoice_LR_number(int invoice_LR_number) {
+	public void setInvoice_LR_number(Long invoice_LR_number) {
 		this.invoice_LR_number = invoice_LR_number;
 	}
 	/**
@@ -173,13 +173,13 @@ public class Invoice {
 	/**
 	 * @return the invoice_phone_number
 	 */
-	public int getInvoice_phone_number() {
+	public Long getInvoice_phone_number() {
 		return invoice_phone_number;
 	}
 	/**
 	 * @param invoice_phone_number the invoice_phone_number to set
 	 */
-	public void setInvoice_phone_number(int invoice_phone_number) {
+	public void setInvoice_phone_number(Long invoice_phone_number) {
 		this.invoice_phone_number = invoice_phone_number;
 	}
 }

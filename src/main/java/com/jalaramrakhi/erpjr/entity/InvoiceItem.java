@@ -18,6 +18,9 @@ public class InvoiceItem {
 	private Unit unit;
 	private double tax;
 
+	public InvoiceItem() {
+	}
+
 	public InvoiceItem(InvoiceItemIdentity invoiceItemIdentity, int item_quantity, double item_price, Unit unit, double tax) {
 		this.invoiceItemIdentity = invoiceItemIdentity;
 		this.item_quantity = item_quantity;
